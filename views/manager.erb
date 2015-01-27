@@ -1,0 +1,16 @@
+<h1>Add Product</h1>
+
+<form action='/manager' method='post'>
+  <label for='product_name'>Product Name</label>
+  <input id='product_name' name='product_name' type='text'>
+  <label for='product_price'>Product Price</label>
+  <input id='product_price' name='product_price' type='text'>
+
+  <button type="submit">Add Product</button>
+</form>
+
+<ul>
+  <% @products.each() do |product| %>
+    <li> <%= product.product_name() %> : <%= product.product_price() %> </li>
+  <% end %>
+</ul>

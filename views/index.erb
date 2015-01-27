@@ -1,0 +1,11 @@
+<h1>Epicodus Grocery</h1>
+
+<p>Product List</p>
+
+<ul>
+  <% @products.each() do |product| %>
+    <li> <%= product.product_name() %> : <%= product.product_price() %> </li>
+  <% end %>
+</ul>
+
+<a class="btn btn-info" href="/manager" role="button">Manager</a>
