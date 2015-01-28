@@ -30,3 +30,18 @@ delete('/manager/:id') do
   Product.find(id).delete()
   erb(:manager)
 end
+
+get("/manager/:id/edit") do
+  @product = Product.find(params.fetch("id").to_i())
+  erb(:product_edit)
+end
+
+patch('/manager/:id') do
+	@products = Product.all()
+	product_name = params.fetch('product_name')
+	product_price = params.fetch('product_price')
+  id = params.fetch("id").to_i()
+  @product = Product.find(id)
+  @product.update({:product_name => product_name, :product_price => product_price})
+  erb(:manager)
+end

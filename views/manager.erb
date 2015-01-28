@@ -1,27 +1,29 @@
 <h1>Add Product</h1>
+<div class="form-group">
+  <form action='/manager' method='post'>
+    <label for='product_name'>Product Name</label>
+    <input id='product_name' class="form-control" name='product_name' type='text'>
 
-<form action='/manager' method='post'>
-  <label for='product_name'>Product Name</label>
-  <input id='product_name' name='product_name' type='text'>
-  <label for='product_price'>Product Price</label>
-  <input id='product_price' name='product_price' type='text'>
-  <button type="submit" class="btn btn-success">Add Product</button>
-</form>
+    <label for='product_price'>Product Price</label>
+    <input id='product_price' class="form-control" name='product_price' type='text'>
+    <br>
+    <button type="submit" class="btn btn-success">Add Product</button>
+  </form>
+</div>
 <br>
 <% @products.each() do |product| %>
   <table class="table table-bordered">
     <tr class="active">
   	  <th> Product Name </th>
   		<th> Product Price </th>
-  		<th> Edit / Delete </th>
+  		<th> Delete </th>
+  		<th> Edit </th>
   	</tr>
   	<tr>
   		<td> <%= product.product_name() %> </td>
   		<td> $<%= product.product_price() %> </td>
-  		<td> <form method="post" action="/manager/<%= product.id() %>">
-            <input name="_method" type="hidden" value="delete">
-            <button type="submit" class="btn btn-danger">Delete Item!</button>
-            </form></td>
+  		<td> <form method="post" action="/manager/<%= product.id() %>"> <input name="_method" type="hidden" value="delete"> <button type="submit" class="btn btn-danger">Delete</button></form></td>
+      <td><a class="btn btn-info" href="/manager/<%= product.id() %>/edit" role="button">Edit</a></td>
   	</tr>
   </table>
 <% end %>
