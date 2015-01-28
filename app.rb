@@ -23,3 +23,10 @@ post('/manager') do
   @products = Product.all()
   erb(:manager)
 end
+
+delete('/manager/:id') do
+  @products = Product.all()
+  id = params.fetch("id").to_i()
+  Product.find(id).delete()
+  erb(:manager)
+end

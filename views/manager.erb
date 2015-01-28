@@ -5,12 +5,25 @@
   <input id='product_name' name='product_name' type='text'>
   <label for='product_price'>Product Price</label>
   <input id='product_price' name='product_price' type='text'>
-
-  <button type="submit">Add Product</button>
+  <button type="submit" class="btn btn-success">Add Product</button>
 </form>
+<br>
+<% @products.each() do |product| %>
+  <table class="table table-bordered">
+    <tr class="active">
+  	  <th> Product Name </th>
+  		<th> Product Price </th>
+  		<th> Edit / Delete </th>
+  	</tr>
+  	<tr>
+  		<td> <%= product.product_name() %> </td>
+  		<td> $<%= product.product_price() %> </td>
+  		<td> <form method="post" action="/manager/<%= product.id() %>">
+            <input name="_method" type="hidden" value="delete">
+            <button type="submit" class="btn btn-danger">Delete Item!</button>
+            </form></td>
+  	</tr>
+  </table>
+<% end %>
 
-<ul>
-  <% @products.each() do |product| %>
-    <li> <%= product.product_name() %> : <%= product.product_price() %> </li>
-  <% end %>
-</ul>
+<a class="btn btn-info" href="/" role="button">View Store</a>
