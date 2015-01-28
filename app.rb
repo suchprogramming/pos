@@ -6,8 +6,8 @@ require("./lib/product")
 require("pg")
 
 get('/') do
-	@products = Product.all()
-	erb(:index)
+  @products = Product.all()
+  erb(:index)
 end
 
 get('/manager') do
@@ -37,9 +37,9 @@ get("/manager/:id/edit") do
 end
 
 patch('/manager/:id') do
-	@products = Product.all()
-	product_name = params.fetch('product_name')
-	product_price = params.fetch('product_price')
+  @products = Product.all()
+  product_name = params.fetch('product_name')
+  product_price = params.fetch('product_price')
   id = params.fetch("id").to_i()
   @product = Product.find(id)
   @product.update({:product_name => product_name, :product_price => product_price})
