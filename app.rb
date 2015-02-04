@@ -9,14 +9,16 @@ end
 
 get('/manager') do
   @products = Product.all()
+  @categories = Category.all()
   erb(:manager)
 end
 
 post('/manager') do
   product_name = params.fetch('product_name')
   product_price = params.fetch('product_price')
-  @product = Product.new({:product_name => product_name, :product_price => product_price})
-  @product.save()
+  category_id = params.fetch('category_id')
+  @product = Product.create({:product_name => product_name, :product_price => product_price, :category_id => category_id})
+  @categories = Category.all()
   @products = Product.all()
   erb(:manager)
 end

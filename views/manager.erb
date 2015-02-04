@@ -7,6 +7,14 @@
     <label for='product_price'>Product Price</label>
     <input id='product_price' class="form-control" name='product_price' type='text'>
     <br>
+
+    <label for="category_id">Select Category</label>
+    <select id='category_id' name='category_id' type='text'>
+    <% @categories.each() do |category| %>
+      <option value="<%= category.id()%>"> <%= category.name() %> </option>
+    <% end %>
+    </select>
+    <br></br>
     <button type="submit" class="btn btn-success">Add Product</button>
   </form>
 </div>

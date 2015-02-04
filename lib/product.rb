@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+  belongs_to :category
   validates(:product_name, {:presence => true, :length => {:maximum => 30}})
   before_save(:titlecase_product_name)
 
