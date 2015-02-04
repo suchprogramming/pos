@@ -33,15 +33,17 @@ end
 
 get("/manager/:id/edit") do
   @product = Product.find(params.fetch("id").to_i())
+  @categories = Category.all()
   erb(:product_edit)
 end
 
 patch('/manager/:id') do
   @products = Product.all()
+  @categories = Category.all()
   product_name = params.fetch('product_name')
   product_price = params.fetch('product_price')
+  category_id = params.fetch('category_id')
   id = params.fetch("id").to_i()
-  @product = Product.find(id)
-  @product.update({:product_name => product_name, :product_price => product_price})
+  @product = Product.find(id).update({:product_name => product_name, :product_price => product_price, :category_id => category_id})
   erb(:manager)
 end

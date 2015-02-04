@@ -5,9 +5,17 @@
 
     <label for="product_name">New Product Name</label>
     <input id="product_name" class="form-control" name="product_name" type="text" placeholder="New Name">
-  
+
     <label for="product_price">New Product Price</label>
     <input id="product_price" class="form-control" name="product_price" type="text" placeholder="New Price">
+    <br>
+    <label for="category_id">Select Category</label>
+    <select id='category_id' name='category_id' type='text'>
+    <% @categories.each() do |category| %>
+      <option value="<%= category.id()%>"> <%= category.name() %> </option>
+    <% end %>
+    </select>
+    <br>
     <br>
     <button type="submit" class ="btn btn-success">Update</button>
   </div>
@@ -17,10 +25,12 @@
   <tr class="active">
     <th> Current Product Name </th>
     <th> Current Product Price </th>
+    <th> Current Category </th>
   </tr>
   <tr>
     <td> <%= @product.product_name() %> </td>
     <td> $<%= @product.product_price() %> </td>
+    <td> <%= @product.category.name() %> </td>
   </tr>
 </table>
 <a class="btn btn-info" href="/manager" role="button">Manager</a>
