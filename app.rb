@@ -18,17 +18,13 @@ post('/manager') do
   product_price = params.fetch('product_price')
   category_id = params.fetch('category_id')
   @product = Product.create({:product_name => product_name, :product_price => product_price, :category_id => category_id})
-  @categories = Category.all()
-  @products = Product.all()
-  erb(:manager)
+  redirect("/manager")
 end
 
 delete('/manager/:id') do
-  @products = Product.all()
-  @categories = Category.all()
   id = params.fetch("id").to_i()
   Product.find(id).delete()
-  erb(:manager)
+  redirect("/manager")
 end
 
 get("/manager/:id/edit") do
@@ -38,12 +34,10 @@ get("/manager/:id/edit") do
 end
 
 patch('/manager/:id') do
-  @products = Product.all()
-  @categories = Category.all()
   product_name = params.fetch('product_name')
   product_price = params.fetch('product_price')
   category_id = params.fetch('category_id')
   id = params.fetch("id").to_i()
   @product = Product.find(id).update({:product_name => product_name, :product_price => product_price, :category_id => category_id})
-  erb(:manager)
+  redirect("/manager")
 end

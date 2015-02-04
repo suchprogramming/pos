@@ -21,16 +21,20 @@
   </div>
 </form>
 
-<table class="table table-bordered">
-  <tr class="active">
-    <th> Current Product Name </th>
-    <th> Current Product Price </th>
-    <th> Current Category </th>
-  </tr>
-  <tr>
-    <td> <%= @product.product_name() %> </td>
-    <td> $<%= @product.product_price() %> </td>
-    <td> <%= @product.category.name() %> </td>
-  </tr>
+<table class="table table-bordered" id="table_id">
+  <thead>
+    <tr class="active">
+      <th> Current Product Name </th>
+      <th> Current Product Price </th>
+      <th> Current Category </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> <%= @product.product_name() %> </td>
+      <td> $<%= @product.product_price() %> </td>
+      <td> <%= @product.category.name() %> </td>
+    </tr>
+  <tbody>
 </table>
 <a class="btn btn-info" href="/manager" role="button">Manager</a>

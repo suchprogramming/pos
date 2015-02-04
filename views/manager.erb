@@ -20,8 +20,8 @@
   </form>
 </div>
 <br>
-<% @products.each() do |product| %>
-  <table class="table table-bordered">
+<table class="table table-bordered" id="table_id">
+  <thead>
     <tr class="active">
       <th> Product Name </th>
       <th> Product Price </th>
@@ -29,14 +29,18 @@
       <th> Delete </th>
       <th> Edit </th>
     </tr>
-    <tr>
-      <td> <%= product.product_name() %> </td>
-      <td> $<%= product.product_price() %> </td>
-      <td> <%= product.category.name()%> </td>
-      <td> <form method="post" action="/manager/<%= product.id() %>"> <input name="_method" type="hidden" value="delete"> <button type="submit" class="btn btn-danger">Delete</button></form></td>
-      <td><a class="btn btn-info" href="/manager/<%= product.id() %>/edit" role="button">Edit</a></td>
-    </tr>
-  </table>
-<% end %>
+  </thead>
+  <tbody>
+    <% @products.each() do |product| %>
+      <tr>
+        <td> <%= product.product_name() %> </td>
+        <td> $<%= product.product_price() %> </td>
+        <td> <%= product.category.name()%> </td>
+        <td> <form method="post" action="/manager/<%= product.id() %>"> <input name="_method" type="hidden" value="delete"> <button type="submit" class="btn btn-danger">Delete</button></form> </td>
+        <td> <a class="btn btn-info" href="/manager/<%= product.id() %>/edit" role="button">Edit</a> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <a class="btn btn-info" href="/" role="button">View Store</a>
