@@ -7,11 +7,13 @@
     <tr class="active">
       <th> Product Name </th>
       <th> Product Price </th>
+      <th> Category </th>
       <th> Add </th>
     </tr>
     <tr>
       <td> <%= product.product_name() %> </td>
       <td> $<%= product.product_price() %> </td>
+      <td> <%= product.category.name() %> </td>
       <td> <button type="submit" class="btn btn-info">Add</button> </td>
     </tr>
  </table>

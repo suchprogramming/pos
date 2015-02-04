@@ -25,6 +25,7 @@ end
 
 delete('/manager/:id') do
   @products = Product.all()
+  @categories = Category.all()
   id = params.fetch("id").to_i()
   Product.find(id).delete()
   erb(:manager)
