@@ -9,7 +9,7 @@
     <br>
 
     <label for="category_id">Select Category</label>
-    <select id='category_id' name='category_id' type='text'>
+    <select id='category_id' name='category_id' type='text' class='form-control'>
     <% @categories.each() do |category| %>
       <option value="<%= category.id()%>"> <%= category.name() %> </option>
     <% end %>

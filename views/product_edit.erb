@@ -10,18 +10,17 @@
     <input id="product_price" class="form-control" name="product_price" type="text" placeholder="New Price">
     <br>
     <label for="category_id">Select Category</label>
-    <select id='category_id' name='category_id' type='text'>
+    <select id='category_id' name='category_id' type='text' class='form-control'>
     <% @categories.each() do |category| %>
       <option value="<%= category.id()%>"> <%= category.name() %> </option>
     <% end %>
     </select>
     <br>
-    <br>
-    <button type="submit" class ="btn btn-success table-hover">Update</button>
+    <button type="submit" class ="btn btn-success">Update</button>
   </div>
 </form>
 
-<table class="table table-bordered" id="table_id">
+<table class="table table-bordered table-hover" id="table_id">
   <thead>
     <tr class="active">
       <th> Current Product Name </th>
