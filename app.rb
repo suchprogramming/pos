@@ -18,7 +18,11 @@ post('/manager') do
   product_price = params.fetch('product_price')
   category_id = params.fetch('category_id')
   @product = Product.create({:product_name => product_name, :product_price => product_price, :category_id => category_id})
-  redirect("/manager")
+  if @product.save
+    redirect("/manager")
+  else
+    erb(:errors)
+  end
 end
 
 delete('/manager/:id') do

@@ -1,0 +1,7 @@
+<h3><span class="label label-danger">Oops! There are <span class="badge"><%= @product.errors.count %> </span> errors!</span></h3>
+<% @product.errors.full_messages.each do |message| %>
+  <div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span> <%= message %>
+  </div>
+<% end %>
